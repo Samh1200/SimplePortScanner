@@ -29,6 +29,11 @@ def check_port(host, port):
 def scan_range(host, port_range):
     open_ports = []
     port_dict = {}
+    try:
+        ip = socket.gethostbyname(host)
+    except socket.gaierror:
+        return PortStatus.UNRESOLVED
+    
     #Insert Executor here:
     with ThreadPoolExecutor(max_workers=100) as executor:
         for x in range(port_range[0], port_range[1] + 1):
@@ -43,7 +48,3 @@ def scan_range(host, port_range):
             
     return open_ports
 
-
-start = time.time()
-print(scan_range("scanme.nmap.org", (1, 1000)))
-print(f"Took {time.time() - start:.2f} Seconds")    
