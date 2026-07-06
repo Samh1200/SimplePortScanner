@@ -19,3 +19,9 @@ check_port(host, port) — Opens a socket and attempts to connect to a single po
 scan_range(host, port_range) — Resolves the hostname once upfront (failing fast with a clear UNRESOLVED status if it can't), then checks every port in the given range concurrently using a ThreadPoolExecutor. Each port check is submitted as a separate task, and results are collected as they complete via as_completed, rather than waiting for them in a fixed order.
 
 Please only use this utility on hosts you are permitted to test on
+
+## Usage
+
+```bash
+python3 main.py
+```
